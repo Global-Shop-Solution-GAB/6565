@@ -1,0 +1,793 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(BaseForm)
+Gui.Form..Caption("Form")
+Gui.Form..Size(423,97)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..BarAddButton("ResetColumns","Reset Column",V.Enum.Image!SETTINGS_BLACK)
+Gui.Form.dtpActivateDate.Create(DatePicker)
+Gui.Form.dtpActivateDate.Enabled(True)
+Gui.Form.dtpActivateDate.Visible(True)
+Gui.Form.dtpActivateDate.Zorder(0)
+Gui.Form.dtpActivateDate.Size(100,20)
+Gui.Form.dtpActivateDate.Position(27,36)
+Gui.Form.dtpActivateDate.CheckBox(False)
+Gui.Form.dtpActivateDate.FontName("Tahoma")
+Gui.Form.dtpActivateDate.FontSize(8.25)
+Gui.Form.chkActivated.Create(CheckBox)
+Gui.Form.chkActivated.Enabled(False)
+Gui.Form.chkActivated.Visible(True)
+Gui.Form.chkActivated.Zorder(0)
+Gui.Form.chkActivated.Size(75,20)
+Gui.Form.chkActivated.Position(28,10)
+Gui.Form.chkActivated.Caption("Activated")
+Gui.Form.chkActivated.FontName("Tahoma")
+Gui.Form.chkActivated.FontSize(8.25)
+Gui.Form.cmdActivate.Create(Button)
+Gui.Form.cmdActivate.Enabled(True)
+Gui.Form.cmdActivate.Visible(True)
+Gui.Form.cmdActivate.Zorder(0)
+Gui.Form.cmdActivate.Size(164,23)
+Gui.Form.cmdActivate.Position(137,34)
+Gui.Form.cmdActivate.Caption("Activate/Change Date")
+Gui.Form.cmdActivate.FontName("Tahoma")
+Gui.Form.cmdActivate.FontSize(8.25)
+Gui.Form.cmdActivate.Event(Click,cmdActivate_Click)
+Gui.Form.cmdActivate.ForeColor(16777215)
+Gui.Form.cmdActivate.BackColor(9157775)
+Gui.Form.cmdActivate.FontStyle(True,False,False,False,False)
+Gui.Form.cmdDeactivate.Create(Button)
+Gui.Form.cmdDeactivate.Enabled(True)
+Gui.Form.cmdDeactivate.Visible(True)
+Gui.Form.cmdDeactivate.Zorder(0)
+Gui.Form.cmdDeactivate.Size(105,23)
+Gui.Form.cmdDeactivate.Position(310,34)
+Gui.Form.cmdDeactivate.Caption("Deactivate")
+Gui.Form.cmdDeactivate.FontName("Tahoma")
+Gui.Form.cmdDeactivate.FontSize(8.25)
+Gui.Form.cmdDeactivate.ForeColor(16777215)
+Gui.Form.cmdDeactivate.BackColor(8036607)
+Gui.Form.cmdDeactivate.Event(Click,cmdDeactivate_Click)
+Gui.Form2..Create(DashForm)
+Gui.Form2..Caption("Commission Type Processing")
+Gui.Form2..Size(1024,720)
+Gui.Form2..MinX(0)
+Gui.Form2..MinY(0)
+Gui.Form2..Position(0,0)
+Gui.Form2..AlwaysOnTop(False)
+Gui.Form2..FontName("Tahoma")
+Gui.Form2..FontSize(8.25)
+Gui.Form2..ControlBox(True)
+Gui.Form2..MaxButton(True)
+Gui.Form2..MinButton(True)
+Gui.Form2..MousePointer(0)
+Gui.Form2..Moveable(True)
+Gui.Form2..Sizeable(True)
+Gui.Form2..ShowInTaskBar(True)
+Gui.Form2..TitleBar(True)
+Gui.Form2..BarRefreshButton(False)
+Gui.Form2..BarHelpButton(True,"Process Commission Type","Compare Ship Date and Part Date then assign Commission Type","",1.0.0,"12/16/2021 10:18:19 PM","",0,0,False)
+Gui.Form2..Event(RefreshClick,Form2_RefreshClick)
+Gui.Form2..Event(UnLoad,Form2_UnLoad)
+Gui.Form2..Event(ExportClick,Form2_ExportClick)
+Gui.Form2..BarExportButton(True)
+Gui.Form2.dtpStart.Create(DatePicker)
+Gui.Form2.dtpStart.Enabled(True)
+Gui.Form2.dtpStart.Visible(True)
+Gui.Form2.dtpStart.Zorder(0)
+Gui.Form2.dtpStart.Size(100,20)
+Gui.Form2.dtpStart.Position(100,5)
+Gui.Form2.dtpStart.CheckBox(False)
+Gui.Form2.dtpStart.FontName("Tahoma")
+Gui.Form2.dtpStart.FontSize(8.25)
+Gui.Form2.lbl1.Create(Label,"Ship Date Start",True,86,13,0,9,9,True,0,"Tahoma",8.25,,0,0)
+Gui.Form2.lbl1.BorderStyle(0)
+Gui.Form2.lbl1.FontStyle(True,False,False,False,False)
+Gui.Form2.lbl2.Create(Label,"Ship Date End",True,77,13,0,221,9,True,0,"Tahoma",8.25,,0,0)
+Gui.Form2.lbl2.BorderStyle(0)
+Gui.Form2.lbl2.FontStyle(True,False,False,False,False)
+Gui.Form2.dtpEnd.Create(DatePicker)
+Gui.Form2.dtpEnd.Enabled(True)
+Gui.Form2.dtpEnd.Visible(True)
+Gui.Form2.dtpEnd.Zorder(0)
+Gui.Form2.dtpEnd.Size(100,20)
+Gui.Form2.dtpEnd.Position(301,5)
+Gui.Form2.dtpEnd.CheckBox(False)
+Gui.Form2.dtpEnd.FontName("Tahoma")
+Gui.Form2.dtpEnd.FontSize(8.25)
+Gui.Form2.gsCom.Create(GsGridControl)
+Gui.Form2.gsCom.Enabled(True)
+Gui.Form2.gsCom.Visible(True)
+Gui.Form2.gsCom.Zorder(0)
+Gui.Form2.gsCom.Size(1009,619)
+Gui.Form2.gsCom.Position(8,31)
+Gui.Form2.gsCom.Anchor(15)
+Gui.Form2.cmdProcessComm.Create(Button)
+Gui.Form2.cmdProcessComm.Enabled(True)
+Gui.Form2.cmdProcessComm.Visible(True)
+Gui.Form2.cmdProcessComm.Zorder(0)
+Gui.Form2.cmdProcessComm.Size(136,18)
+Gui.Form2.cmdProcessComm.Position(505,6)
+Gui.Form2.cmdProcessComm.Caption("Process Commission")
+Gui.Form2.cmdProcessComm.FontName("Tahoma")
+Gui.Form2.cmdProcessComm.FontSize(8.25)
+Gui.Form2.cmdProcessComm.ForeColor(16777215)
+Gui.Form2.cmdProcessComm.BackColor(9157775)
+Gui.Form2.cmdProcessComm.FontStyle(True,False,False,False,False)
+Gui.Form2.cmdProcessComm.Event(Click,cmdProcessComm_Click)
+Gui.Form2.cmdGetOrder.Create(Button)
+Gui.Form2.cmdGetOrder.Enabled(True)
+Gui.Form2.cmdGetOrder.Visible(True)
+Gui.Form2.cmdGetOrder.Zorder(0)
+Gui.Form2.cmdGetOrder.Size(85,18)
+Gui.Form2.cmdGetOrder.Position(410,6)
+Gui.Form2.cmdGetOrder.Caption("Get Orders")
+Gui.Form2.cmdGetOrder.FontName("Tahoma")
+Gui.Form2.cmdGetOrder.FontSize(8.25)
+Gui.Form2.cmdGetOrder.FontStyle(True,False,False,False,False)
+Gui.Form2.cmdGetOrder.ForeColor(16777215)
+Gui.Form2.cmdGetOrder.BackColor(15128749)
+Gui.Form2.cmdGetOrder.Event(Click,cmdGetOrder_Click)
+Gui.Form2.proBar1.Create(ProgressBar)
+Gui.Form2.proBar1.Visible(False)
+Gui.Form2.proBar1.Size(263,16)
+Gui.Form2.proBar1.Position(751,7)
+Gui.Form2.proBar1.Anchor(13)
+Gui.Form2.lblPleaseWait.Create(Label,"Please wait...",False,73,13,0,651,10,True,0,"Tahoma",8.25,,0,0)
+Gui.Form2.lblPleaseWait.BorderStyle(0)
+Gui.Form2.lblPleaseWait.ForeColor(7504122)
+Gui.Form2.lblPleaseWait.FontStyle(True,False,False,False,False)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global.sPart.Declare
+v.Global.sLoc.Declare
+v.Global.bLoading.Declare
+v.Global.bPassedFirstTimeLoading.Declare
+v.Global.bProcessingCommission.Declare
+v.Global.bExporting.Declare
+Program.Sub.Preflight.End
+Program.Sub.Main.Start
+'BN, Dec 2021
+'This project will set an activation date for parts which will be stored in GCG_6565_PartDate table.
+'Script 1 button at Inventory Master will help to activate date for parts
+'Custom Menu item will display a dashboard based on date shipped from Order_Hist_Line for parts that have been activated
+'After getting the order lines from Order_Hist_Line, the program will process and determine how many days since the activation date to the shipped date.
+'If it is within 1 year 
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+f.Intrinsic.Control.Try
+	v.Local.sSQL.Declare
+	v.Local.iUserID.Declare
+	v.Local.sJobStream.Declare
+	v.Local.sMenuItem.Declare
+	v.Local.sRet.Declare
+	
+	'Rename Script 1 button at Inventory > File > Inventory Parts
+	f.Intrinsic.Control.If(v.Caller.Hook,=,10120)	
+		Variable.Passed.000068.Set("Activate Date")
+		
+	'Execute Script 1 button at Inventory > File > Inventory Parts > Open	
+	f.Intrinsic.Control.ElseIf(v.Caller.Hook,=,10210)
+	
+		f.Intrinsic.Control.If(Variable.Passed.000007.Trim,=,"")
+			f.Intrinsic.UI.Msgbox("No Part is populated.","Enter a Part")
+			f.Intrinsic.Control.ExitSub
+		f.Intrinsic.Control.EndIf
+		f.Intrinsic.String.GSSPartString(Variable.Passed.000007.Trim,Variable.Passed.000008.Trim,v.Global.sPart)
+		v.Global.sLoc.Set(Variable.Passed.000009)
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Intrinsic.Control.CallSub(Check_Table)
+		f.Intrinsic.String.Build("Select Top 1 PartDate from GCG_6565_PartDate where Part = '{0}' and Loc = '{1}'",v.Global.sPart,v.Global.sLoc,v.Local.sSQL)
+		f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Ambient.ExecuteAndReturnEOF)
+			gui.Form.chkActivated.Value(0)
+		f.Intrinsic.Control.Else
+			gui.Form.chkActivated.Value(1)
+			gui.Form.dtpActivateDate.Value(v.Local.sRet)
+		f.Intrinsic.Control.EndIf		
+		f.ODBC.Connection!conx.Close
+		f.Intrinsic.String.Build("Part: {0} Location: {1}",v.Global.sPart,v.Global.sLoc,v.Local.sRet)
+		gui.Form..Caption(v.Local.sRet)
+		gui.Form..Show		
+	
+	'Run from a menu item
+	f.Intrinsic.Control.Else
+		f.ODBC.Connection!conx.OpenCompanyConnection
+		f.Intrinsic.Control.CallSub(Check_Table)
+		f.ODBC.Connection!conx.Close
+		
+		gui.Form2..Show
+		gui.Form2..WindowState(2)
+	
+	f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Main.End
+
+Program.Sub.Catching.Start
+f.Intrinsic.Control.Try
+	v.Local.sMsg.Declare
+	v.Local.sPath.Declare
+	v.Local.sTitle.Declare
+	f.Intrinsic.String.Build("{0}\GCG_6565_Commission.g2u",v.Ambient.ScriptPath,v.Local.sPath)
+	
+	f.Intrinsic.String.Build("Path: {1}{0}Sub: {2}{0}Error: {3}",v.Ambient.NewLine,v.Local.sPath,v.Args.Sub,v.Args.ErrorDesc,v.Local.sMsg)
+	f.Intrinsic.String.Build("GAB Error Number {0}",v.Args.errorno,v.Local.sTitle)
+	f.Intrinsic.UI.Msgbox(v.Local.sMsg,v.Local.sTitle)
+	F.Intrinsic.Control.CallSub("Unload")
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+	F.Intrinsic.Control.CallSub("Unload")
+f.Intrinsic.Control.EndTry
+Program.Sub.Catching.End
+
+Program.Sub.Unload.Start
+f.Intrinsic.Control.Try
+
+	f.Intrinsic.Control.If(v.ODBC.conx.Exists)
+		f.ODBC.Connection!conx.Close
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.End
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorDescription)
+	f.Intrinsic.Control.End
+f.Intrinsic.Control.EndTry
+Program.Sub.Unload.End
+
+Program.Sub.Form_UnLoad.Start
+F.Intrinsic.Control.Try
+	
+	f.Intrinsic.Control.CallSub(Unload)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Form2_UnLoad.Start
+F.Intrinsic.Control.Try
+	
+	f.Intrinsic.Control.CallSub(Unload)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form2_UnLoad.End
+
+Program.Sub.cmdActivate_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	v.Local.dDate.Declare
+	
+	v.Local.dDate.Set(v.Screen.Form!dtpActivateDate.Value)
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Activating...")
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Select Top 1 PartDate from GCG_6565_PartDate where Part = '{0}' and Loc = '{1}'",v.Global.sPart,v.Global.sLoc,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Ambient.ExecuteAndReturnEOF)
+		f.Intrinsic.String.Build("Insert into GCG_6565_PartDate (Part,Loc,PartDate) values ('{0}','{1}','{2}')",v.Global.sPart.PSQLFriendly,v.Global.sLoc,v.Local.dDate.PervasiveDate,v.Local.sSQL)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("Update GCG_6565_PartDate set PartDate = '{2}' where Part = '{0}' and Loc = '{1}'",v.Global.sPart.PSQLFriendly,v.Global.sLoc,v.Local.dDate.PervasiveDate,v.Local.sSQL)
+	f.Intrinsic.Control.EndIf	
+	f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+	f.ODBC.Connection!conx.Close
+	gui.Form.chkActivated.Value(1)	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.cmdActivate_Click.End
+
+Program.Sub.Check_Table.Start
+F.Intrinsic.Control.Try
+	v.Local.bExist.Declare
+	
+	Function.ODBC.Connection!conx.TableExists("GCG_6565_PartDate",v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.ODBC.Connection!conx.Execute("CREATE TABLE GCG_6565_PartDate ( Part CHAR(20), Loc CHAR(2), PartDate DATE DEFAULT '1900-01-01' );")		
+	f.Intrinsic.Control.Endif
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Check_Table.End
+
+Program.Sub.cmdDeactivate_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	v.Local.dDate.Declare
+		
+	f.Intrinsic.UI.InvokeWaitDialog("Deactivating...")
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.String.Build("Delete from GCG_6565_PartDate where Part = '{0}' and Loc = '{1}'",v.Global.sPart,v.Global.sLoc,v.Local.sSQL)
+	f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+	f.ODBC.Connection!conx.Close
+	gui.Form.chkActivated.Value(0)	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.cmdDeactivate_Click.End
+
+Program.Sub.Form2_RefreshClick.Start
+F.Intrinsic.Control.Try
+	
+	f.Intrinsic.Control.CallSub(Refresh)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Form2_RefreshClick.End
+
+Program.Sub.Refresh.Start
+F.Intrinsic.Control.Try
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	v.Local.dStart.Declare
+	v.Local.dEnd.Declare
+	v.Local.iCnt.Declare
+	v.Local.dD1.Declare
+	v.Local.dD2.Declare
+	v.Local.iDiff.Declare
+		
+	f.Intrinsic.Control.If(v.Global.bLoading)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Global.bLoading.Set(True)
+	gui.Form2.lblPleaseWait.Visible(True)
+	
+	v.Local.dStart.Set(v.Screen.Form2!dtpStart.Value)
+	v.Local.dEnd.Set(v.Screen.Form2!dtpEnd.Value)
+	
+	F.Intrinsic.Control.If(V.Global.bPassedFirstTimeLoading)
+		gui.Form2.gsCom.ClearRows("gvCom")
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("select INVOICE,ORDER_NO,ORDER_SUFFIX,ORDER_LINE,rtrim(COMMISSION_TYPE) as COMMISSION_TYPE,SALESPERSON,CUSTOMER,NAME_CUST_SHIP,ADDRESS1_SHIP,CITY_SHIP,STATE_SHIP,ZIP_SHIP,COUNTRY_SHIP,CUSTOMER_PO,DATE_ORDER,DATE_SHIPPED,o.PART,LOCATION,DESCRIPTION,QTY_ORDERED,QTY_SHIPPED,PRICE,EXTENSION,IsNull(p.PartDate,'1900-01-01') as ActivatedDate from v_Order_Hist_Line o left join GCG_6565_PartDate p on o.Part = p.Part and o.Location = p.Loc where Date_Shipped between '{0}' and '{1}' Order by Order_No,Order_Suffix,Order_Line,Invoice",v.Local.dStart.PervasiveDate,v.Local.dEnd.PervasiveDate,v.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.dtCommission1.Exists)
+		f.Data.DataTable.Close("dtCommission1")		
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.DataTable.dtCommission2.Exists)
+		f.Data.DataTable.Close("dtCommission2")		
+	f.Intrinsic.Control.EndIf	
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Data.DataTable.CreateFromSQL("dtCommission2","conx",v.Local.sSQL,True)
+	f.ODBC.Connection!conx.Close
+	
+	F.Data.DataView.Create("dtCommission2","v2",22,"ActivatedDate <> #01/01/1900#","")
+	f.Data.DataView.ToDataTable("dtCommission2","v2","dtCommission1",True)
+	
+	f.Data.DataTable.AddColumn("dtCommission1","DateDifference","Long",0)
+	
+	'Only work on 2020.1 or after
+	'f.Data.DataTable.DateDiff("dtCommission1","ActivatedDate","DATE_SHIPPED","d","DateDifference")
+	f.Intrinsic.Control.If(v.DataTable.dtCommission1.RowCount,>,0)
+		gui.Form2.proBar1.Max(v.DataTable.dtCommission1.RowCount)
+		gui.Form2.proBar1.Visible(True)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.dtCommission1.RowCount--,1)
+		gui.Form2.proBar1.Value(v.Local.iCnt)
+		v.Local.dD1.Set(v.DataTable.dtCommission1(v.Local.iCnt).ActivatedDate!FieldValString)
+		v.Local.dD2.Set(v.DataTable.dtCommission1(v.Local.iCnt).DATE_SHIPPED!FieldValString)
+		f.Intrinsic.Date.DateDiff("d",v.Local.dD1,v.Local.dD2,v.Local.iDiff)
+		f.Data.DataTable.SetValue("dtCommission1",v.Local.iCnt,"DateDifference",v.Local.iDiff)
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	f.Data.DataTable.AddColumn("dtCommission1","ToProcess","Boolean",False)
+	f.Data.DataTable.AddColumn("dtCommission1","Updated","Boolean",False)
+	f.Data.DataView.Create("dtCommission1","vPro",22,"Commission_Type like 'PLAN%' and len(Commission_Type) = 5 and DateDifference > -1","")
+	f.Data.DataView.SetValue("dtCommission1","vPro",-1,"ToProcess",True)
+	
+	f.Data.DataTable.AddExpressionColumn("dtCommission1","YearCounted","String","IIF(DateDifference < 0,'',IIF(DateDifference >= 0 and DateDifference <= 365,'1',IIF(DateDifference >= 366 and DateDifference <= 730,'2',IIF(DateDifference >= 731 and DateDifference <= 1095,'3',IIF(DateDifference >= 1096 and DateDifference <= 1460,'4',IIF(DateDifference >= 1461 and DateDifference <= 1825,'5',IIF(DateDifference >= 1826 and DateDifference <= 2190,'6','7')))))))")
+	f.Data.DataTable.AddExpressionColumn("dtCommission1","NewType","String","IIF(ToProcess = 1,Substring(Commission_Type,5,1) + YearCounted,'')")
+	f.Data.DataTable.AddExpressionColumn("dtCommission1","ReadytoUpdate","Boolean","IIF(Trim(NewType) = '',0,1)")
+	
+	gui.Form2.gsCom.AddGridviewFromDatatable("gvCom","dtCommission1")
+	f.Intrinsic.Control.CallSub(Format_gvCom)
+	gui.Form2.gsCom.MainView("gvCom")
+	
+	v.Global.bPassedFirstTimeLoading.Set(True)
+	v.Global.bLoading.Set(False)
+	gui.Form2.proBar1.Visible(False)
+	gui.Form2.lblPleaseWait.Visible(False)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Refresh.End
+
+Program.Sub.Form2_ExportClick.Start
+F.Intrinsic.Control.Try	
+	V.Local.sFileExport.Declare
+	V.Local.bExcel.Declare
+	V.Local.bFileLocked.Declare
+	V.Local.sMsg.Declare
+
+	f.Intrinsic.Control.If(v.Global.bPassedFirstTimeLoading,=,False,or,v.Global.bExporting,=,True,v.Global.bLoading,=,True,v.Global.bProcessingCommission,=,True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Global.bExporting.Set(True)	
+
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		F.Intrinsic.String.Build("{0}\CommissionType_{1}.xlsx",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYYYHhNnSs,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.Form2.gsCom.Export(V.Local.sFileExport,"xlsx")
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\CommissionType_{1}.csv",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYYYHhNnSs,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.Form2.gsCom.Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+	F.Intrinsic.Control.EndIf
+	
+	v.Global.bExporting.Set(False)
+	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Form2_ExportClick.End
+
+Program.Sub.Format_gvCom.Start
+f.Intrinsic.Control.Try
+	v.Local.sProp.Declare
+	v.Local.sValue.Declare
+	v.Local.sValue1.Declare
+	v.Local.sValue2.Declare
+	v.Local.sValue3.Declare
+	v.Local.iCnt.Declare
+
+	gui.Form2.gsCom.SuspendLayout()
+	
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","MultiSelect",False)
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","AllowSort",True)
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","AllowFilter",True)
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","OptionsDetailShowDetailTabs",False)
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","OptionsViewShowGroupPanel",True)
+	Gui.Form2.gsCom.SetGridViewProperty("gvCom","EnableAppearanceOddRow",True)
+	Gui.Form2.gsCom.SetGridviewProperty("gvCom","OptionsFilterUseNewCustomFilterDialog",True)
+	Gui.Form2.gsCom.SetGridviewProperty("gvCom","OptionsViewColumnAutoWidth",False)
+	Gui.Form2.gsCom.SetGridviewProperty("gvCom","ColumnPanelRowHeight","50")
+	Gui.Form2.gsCom.SetGridviewProperty("gvCom",v.Enum.GridViewPropertyNames!SuppressNothingDates,True)	
+	gui.Form2.gsCom.SetGridviewProperty("gvCom",v.Enum.GridViewPropertyNames!ShowAutoFilterRow,True)
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.Enum.ColumnPropertyNames!DisplayCustomDateTime,"d")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.Enum.ColumnPropertyNames!DisplayCustomDateTime,"d")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.Enum.ColumnPropertyNames!DisplayCustomDateTime,"d")
+	
+	f.Intrinsic.Control.CallSub(Format_Bulk,"sProperty","HeaderFontBold","sValue","True")
+	
+	f.Intrinsic.Control.CallSub(Format_Bulk,"sProperty","HeaderWordWrap","sValue","wrap")
+	f.Intrinsic.Control.CallSub(Format_Bulk,"sProperty","HeaderVAlignment","sValue","top")
+	f.Intrinsic.Control.CallSub(Format_Bulk,"sProperty","Visible","sValue","True")
+	
+	v.Local.sProp.Set("Caption")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.local.sProp,"Invoice")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.local.sProp,"Order")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,"Suffix")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,"Line")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.local.sProp,"Commission Type")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.local.sProp,"Sales Rep")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.local.sProp,"Customer")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.local.sProp,"Cust. Name")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,"Address")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,"City")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,"State")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,"Zip")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,"Country")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.local.sProp,"Cust. PO")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.local.sProp,"Order Date")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.local.sProp,"Ship Date")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.local.sProp,"Part")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,"Loc")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,"Description")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,"Order Qty")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.local.sProp,"Ship Qty")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.local.sProp,"Price")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.local.sProp,"Extension")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.local.sProp,"Activate Date")	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.local.sProp,"Date Difference")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.local.sProp,"To Process")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.local.sProp,"Updated")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.local.sProp,"Year Counted")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.local.sProp,"New Type")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.local.sProp,"Ready To Update")
+	
+	'Visible Index
+	v.Local.sProp.Set("VisibleIndex")
+	v.Local.iCnt.Set(-1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.local.sProp,v.local.iCnt.++)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,v.local.iCnt.++)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.local.sProp,v.local.iCnt.++)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.local.sProp,v.local.iCnt.++)	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.local.sProp,v.local.iCnt.++)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.local.sProp,v.local.iCnt.++)		
+	
+	v.Local.sProp.Set("Visible")
+	v.Local.sValue.Set("False")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,v.local.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,v.local.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,v.local.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,v.local.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,v.local.sValue)	
+	
+	v.Local.sProp.Set("Width")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.local.sProp,"85")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,"70")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.local.sProp,"70")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.local.sProp,"70")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.local.sProp,"160")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,"160")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,"100")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.local.sProp,"120")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.local.sProp,"85")	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.local.sProp,"120")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,"180")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.local.sProp,"100")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.local.sProp,"85")	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.local.sProp,"85")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.local.sProp,"85")		
+	
+	v.Local.sProp.Set("HeaderHAlignment")
+	v.Local.sValue1.Set("near")
+	v.Local.sValue2.Set("center")
+	v.Local.sValue3.Set("far")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.local.sProp,v.local.sValue2)	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.local.sProp,v.local.sValue2)
+	
+	v.Local.sProp.Set("CellHAlignment")
+	v.Local.sValue1.Set("near")
+	v.Local.sValue2.Set("center")
+	v.Local.sValue3.Set("far")
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.local.sProp,v.local.sValue2)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.local.sProp,v.local.sValue1)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.local.sProp,v.local.sValue2)	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.local.sProp,v.local.sValue3)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.local.sProp,v.local.sValue2)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.local.sProp,v.local.sValue2)
+	
+
+	
+	gui.Form2.gsCom.ResumeLayout()
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Format_gvCom.End
+
+Program.Sub.Format_Bulk.Start
+f.Intrinsic.Control.Try
+
+	gui.Form2.gsCom.SetColumnProperty("gvCom","INVOICE",v.Args.sProperty,v.Args.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_NO",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_SUFFIX",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ORDER_LINE",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COMMISSION_TYPE",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","SALESPERSON",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NAME_CUST_SHIP",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ADDRESS1_SHIP",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CITY_SHIP",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","STATE_SHIP",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ZIP_SHIP",v.Args.sProperty,v.Args.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","COUNTRY_SHIP",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","CUSTOMER_PO",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_ORDER",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DATE_SHIPPED",v.Args.sProperty,v.Args.sValue)	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PART",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","LOCATION",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DESCRIPTION",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_ORDERED",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","QTY_SHIPPED",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","PRICE",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","EXTENSION",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ActivatedDate",v.Args.sProperty,v.Args.sValue)	
+	
+	gui.Form2.gsCom.SetColumnProperty("gvCom","DateDifference",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ToProcess",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","Updated",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","YearCounted",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","NewType",v.Args.sProperty,v.Args.sValue)
+	gui.Form2.gsCom.SetColumnProperty("gvCom","ReadytoUpdate",v.Args.sProperty,v.Args.sValue)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry	
+Program.Sub.Format_Bulk.End
+
+Program.Sub.cmdGetOrder_Click.Start
+F.Intrinsic.Control.Try
+	
+	f.Intrinsic.Control.CallSub(Refresh)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdGetOrder_Click.End
+
+Program.Sub.cmdProcessComm_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.iCnt.Declare
+	v.Local.sFilter.Declare
+	v.Local.sSQL.Declare
+	
+	f.Intrinsic.Control.If(v.Global.bProcessingCommission)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Global.bProcessingCommission.Set(True)
+	
+	f.Intrinsic.Control.If(v.DataTable.dtCommission1.Exists,=,False)
+		f.Intrinsic.UI.Msgbox("No Order to process.")
+		v.Global.bProcessingCommission.Set(False)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.dataview.dtCommission1!vReady.Exists)
+		f.Data.DataView.Close("dtCommission1","vReady")
+	f.Intrinsic.Control.EndIf
+	
+	f.Data.DataView.Create("dtCommission1","vReady",22,"ReadytoUpdate = 1","")
+	gui.Form2.lblPleaseWait.Visible(True)
+	f.Intrinsic.Control.If(v.DataView.dtCommission1!vReady.RowCount,>,0)
+		gui.Form2.proBar1.Max(v.DataView.dtCommission1!vReady.RowCount)
+		gui.Form2.proBar1.Visible(True)
+	f.Intrinsic.Control.EndIf
+	
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataView.dtCommission1!vReady.RowCount--,1)
+		gui.Form2.proBar1.Value(v.Local.iCnt)
+		f.Intrinsic.String.Build("Update Order_Hist_Line set Commission_Type = '{0}' where Invoice = '{1}' and Order_No = '{2}' and Order_Suffix = '{3}' and Order_Line = '{4}'",v.DataView.dtCommission1!vReady(v.Local.iCnt).NewType!FieldValString,v.DataView.dtCommission1!vReady(v.Local.iCnt).Invoice!FieldValString,v.DataView.dtCommission1!vReady(v.Local.iCnt).Order_No!FieldValString,v.DataView.dtCommission1!vReady(v.Local.iCnt).Order_Suffix!FieldValString,v.DataView.dtCommission1!vReady(v.Local.iCnt).Order_Line!FieldValString,v.Local.sSQL)
+		f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+		f.Data.DataView.SetValue("dtCommission1","vReady",v.Local.iCnt,"Updated",True,"Commission_Type",v.DataView.dtCommission1!vReady(v.Local.iCnt).NewType!FieldValString,"ToProcess",False,"ReadytoUpdate",False)
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	f.ODBC.Connection!conx.Close	
+	
+	v.Global.bProcessingCommission.Set(False)
+	gui.Form2.proBar1.Visible(False)
+	gui.Form2.lblPleaseWait.Visible(False)
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub("Catching","sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdProcessComm_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$bnguyen$}$20211220122039032$}$tqzwddZCkmoVRWHEL6DZymEEseDhOdziU3cLY3HIGse5DZsW0Zp9+Z0rxYjYWfgr8mRA6VS6BMI=
+Program.Sub.Comments.End
